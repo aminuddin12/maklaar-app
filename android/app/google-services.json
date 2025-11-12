@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "456470136506",
+    "project_id": "maklaar",
+    "storage_bucket": "maklaar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456470136506:android:f75746ef2c62d0b3dbe483",
+        "android_client_info": {
+          "package_name": "com.maklaar.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456470136506-oru3c51a6v45dsvo1u22248d0m92e7ng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.maklaar.app",
+            "certificate_hash": "fb4ccfd5039c4d01ef7a0a9e1ba3e75eb73a40c5"
+          }
+        },
+        {
+          "client_id": "456470136506-2repr3alfjem4bf60lhr4unso5jnvhaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEOKWdhuTElkGT_WqslnFKnKLEZmJCRZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456470136506-2repr3alfjem4bf60lhr4unso5jnvhaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
