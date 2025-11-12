@@ -135,6 +135,15 @@ class _SliderWidgetState extends State<SliderWidget>
           );
         }
 
+        // PERBAIKAN: Tangani state failure
+        if (state is SliderFetchFailure) {
+          // Tampilkan pesan error atau widget kosong dengan tinggi yang sama
+          return SizedBox(
+              height: 170,
+              child: Center(child: Text("Gagal memuat slider"))
+          );
+        }
+
         // 3. FALLBACK: Tangani semua state lain (Initial, Failure, atau Success tapi kosong).
         // Hentikan timer dan tampilkan widget kosong.
         _timer?.cancel();

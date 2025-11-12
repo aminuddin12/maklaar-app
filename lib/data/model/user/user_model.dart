@@ -38,6 +38,16 @@ class UserModel {
     this.isVerified});
 
   UserModel.fromJson(Map<String, dynamic> json) {
+
+    // Helper function untuk parsing integer yang aman
+    int? _parseSafeInt(dynamic value) {
+      if (value == null) return null;
+      if (value is int) return value;
+      if (value is double) return value.toInt(); // Handle jika API kirim double
+      if (value is String) return int.tryParse(value); // Handle jika API kirim string angka
+      return null; // Fallback jika tipe tidak dikenal
+    }
+
     address = json['address'];
     createdAt = json['created_at'];
     customerTotalPost = json['customertotalpost'] as int?;
@@ -51,20 +61,12 @@ class UserModel {
     mobile = json['mobile'];
     name = json['name'];
 
-    notification = (json['notification'] != null
-        ? (json['notification'] is int)
-        ? json['notification']
-        : int.parse(json['notification'])
-        : null);
+    notification = _parseSafeInt(json['notification']);
     profile = json['profile'];
     token = json['token'];
     updatedAt = json['updated_at'];
-    isVerified = json['is_verified'] as int?;
-    isPersonalDetailShow = (json['show_personal_details'] != null
-        ? (json['show_personal_details'] is int)
-        ? json['show_personal_details']
-        : int.parse(json['show_personal_details'])
-        : null);
+    isVerified = _parseSafeInt(json['is_verified']);
+    isPersonalDetailShow = _parseSafeInt(json['show_personal_details']);
   }
 
   Map<String, dynamic> toJson() {

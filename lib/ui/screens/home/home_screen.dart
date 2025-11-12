@@ -192,14 +192,20 @@ class HomeScreenState extends State<HomeScreen>
               children: [
                 BlocBuilder<FetchHomeScreenCubit, FetchHomeScreenState>(
                   builder: (context, state) {
-                    if (state is FetchHomeScreenInProgress) {
+                    if (state is FetchHomeScreenInProgress || state is FetchHomeScreenInitial) {
                       return shimmerEffect();
                     }
                     if (state is FetchHomeScreenSuccess) {
                       return homeScreenContent(state);
                     }
-                    if (state is FetchHomeScreenInitial) {
-                      return shimmerEffect();
+                    // PERBAIKAN: Tangani state failure
+                    if (state is FetchHomeScreenFail) {
+                      // Tampilkan widget error yang sesuai
+                      return Center(
+                        child: NoInternet(onRetry: () {
+                          refreshAllData();
+                        }),
+                      );
                     }
                     return SizedBox.shrink();
                   },
@@ -357,6 +363,8 @@ class HomeScreenState extends State<HomeScreen>
       ),
     );
   }
+
+
 }
 
 class AllItemsWidget extends StatelessWidget {

@@ -8,11 +8,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:com.maklaar.app/simple_bloc_observer.dart';
 
 /// List of Hive box names that need to be initialized
 final List<String> _hiveBoxes = [
@@ -34,6 +36,7 @@ Future<void> initApp() async {
 
     // Configure Google Maps for Android
     _configureGoogleMaps();
+    Bloc.observer = SimpleBlocObserver();
 
     // Set up error handling for release mode
     if (kReleaseMode) {
@@ -62,6 +65,8 @@ Future<void> initApp() async {
     rethrow;
   }
 }
+
+
 
 /// Configures Google Maps for Android platform
 void _configureGoogleMaps() {
